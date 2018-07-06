@@ -5,8 +5,9 @@ class DummySocket {
     throw new Error('Runtime does not offer raw sockets!')
   }
 }
-
-if (typeof process !== 'undefined') {
+if (typeof Socket !== 'undefined' ){
+	TCPSocket = require('./cordova-socket' )
+} else if (typeof process !== 'undefined') {
   TCPSocket = require('./node-socket')
 } else if (typeof chrome !== 'undefined' && (chrome.socket || chrome.sockets)) {
   TCPSocket = require('./chrome-socket')
